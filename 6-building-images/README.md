@@ -12,9 +12,14 @@ Other common commands in a Dockerfile are COPY directives which copy files into 
 
 ## Session
 
-`docker build -t example-app example-app`
+`docker build -t example-app:latest example-app`
 
-`docker run -it -p 8080:8080 --rm example-app`
-
+`docker run -it -p 8080:8080 --rm example-app:latest`
 
 ## Challenge
+
+Modify the docker file in `challenge-app/DockerFile` so that the following command will build a working spring boot app
+
+`docker build -t challenge-app:latest challenge-app`
+
+`docker run -it -p 8080:8080 --rm challenge-app:latest`
