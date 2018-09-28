@@ -1,5 +1,5 @@
 
-`aws cloudformation deploy --stack-name challenge-app-bootstrap --template-file challenge-app-bootstrap.yml --capabilities CAPABILITY_IAM`
+`aws cloudformation deploy --stack-name challenge-app-registry --template-file challenge-app-registry.yml --capabilities CAPABILITY_IAM`
 
 `aws cloudformation list-exports`
 
@@ -8,5 +8,7 @@
 `$(aws ecr get-login --no-include-email)`
 
 `docker push <repository_url>`
+
+`aws cloudformation deploy --stack-name challenge-app-bootstrap --template-file challenge-app-bootstrap.yml --capabilities CAPABILITY_IAM`
 
 `aws cloudformation deploy --stack-name challenge-app-service --template-file challenge-app-service.yml --capabilities CAPABILITY_IAM`

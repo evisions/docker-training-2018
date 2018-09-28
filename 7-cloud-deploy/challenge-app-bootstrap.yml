@@ -5,10 +5,6 @@ Parameters:
     Type: String
     Default: develop
     Description: A name for the environment that this cloudformation will be part of.
-  RegistryName:
-    Type: String
-    Default: challenge-app
-    Description: The name of the repository where application containers will
 Mappings:
   # Hard values for the subnet masks. These masks define
   # the range of internal IP addresses that can be assigned.
@@ -29,10 +25,6 @@ Mappings:
     PublicTwo:
       CIDR: '10.0.1.0/24'
 Resources:
-  ECRRegistry:
-    Type: AWS::ECR::Repository
-    Properties:
-      RepositoryName: !Ref 'RegistryName'
   # VPC in which containers will be networked.
   # It has two public subnets
   # We distribute the subnets across the first two available subnets
@@ -284,11 +276,6 @@ Resources:
 # about changing any of them, because of them are exported with specific
 # names so that the other task related CF templates can use them.
 Outputs:
-  ImageUrl:
-    Description: The url of the image registry
-    Value: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RegistryName}"
-    Export:
-      Name: !Join [ ':', [ !Ref 'EnvironmentName', 'ImageUrl' ] ]
   ClusterName:
     Description: The name of the ECS cluster
     Value: !Ref 'ECSCluster'
