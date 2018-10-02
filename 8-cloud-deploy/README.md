@@ -15,7 +15,7 @@
 
 find ImageUrl in exports list
 
-`docker tag challenge-app:latest <repository_url>:v1`
+`docker tag challenge-app:latest <repository_url>:$(git rev-parse --short HEAD)`
 
 `$(aws ecr get-login --no-include-email)`
 
@@ -23,4 +23,4 @@ find ImageUrl in exports list
 
 `aws cloudformation deploy --stack-name challenge-app-bootstrap --template-file aws/bootstrap.yml --capabilities CAPABILITY_IAM`
 
-`aws cloudformation deploy --stack-name challenge-app-service --template-file aws/service.yml`
+`aws cloudformation deploy --stack-name challenge-app-service --template-file aws/service.yml --parameter-overrides "ImageTag=$(git rev-parse --short HEAD)"`

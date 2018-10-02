@@ -13,7 +13,6 @@ Parameters:
 
   ImageTag:
     Type: String
-    Default: latest
     Description: The image tag that should be deployed
 
   ContainerPort:
